@@ -1,0 +1,870 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+% Don't touch this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{longtable}
+
+
+\newcommand{\blankline}{\quad\pagebreak[2]}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Modify Course title, instructor name, semester here %%%%%%%%
+\title{CSC381: Theory of Computation (Revised for Online Meeting)}
+\author{Dr. Robert Lowe}
+\date{Spring (March 30 -- May), 2020}
+
+
+% Don't touch this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\linespread{1.05} % Palatino needs more leading (space between lines)
+\usepackage[mmddyyyy]{datetime}% http://ctan.org/pkg/datetime
+\usepackage{advdate}% http://ctan.org/pkg/advdate
+\newdateformat{syldate}{\twodigit{\THEMONTH}/\twodigit{\THEDAY}}
+\newsavebox{\MONDAY}\savebox{\MONDAY}{Mon}% Mon
+\newcommand{\week}[1]{%
+%  \cleardate{mydate}% Clear date
+% \newdate{mydate}{\the\day}{\the\month}{\the\year}% Store date
+  \paragraph*{\kern-2ex\quad #1, \syldate{\today} - \AdvanceDate[4]\syldate{\today}:}% Set heading  \quad #1
+%  \setbox1=\hbox{\shortdayofweekname{\getdateday{mydate}}{\getdatemonth{mydate}}{\getdateyear{mydate}}}%
+  \ifdim\wd1=\wd\MONDAY
+    \AdvanceDate[7]
+  \else
+    \AdvanceDate[7]
+  \fi%
+}
+\usepackage{setspace}
+\usepackage{multicol}
+%\usepackage{indentfirst}
+\usepackage{fancyhdr}
+\usepackage{lastpage}\usepackage{url}
+
+\usepackage{lastpage}
+\usepackage{layout}
+
+
+\lhead{}
+\chead{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Modify header here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\rhead{\footnotesize CSC3810-01 Spring 2020 (Revised)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Don't touch this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lfoot{}
+\cfoot{\small \thepage/\pageref*{LastPage}}
+\rfoot{}
+
+\usepackage{array}
+\usepackage{xcolor}\usepackage{color}
+\definecolor{clemsonorange}{HTML}{EA6A20}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding T1
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "mathpazo" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\pdf_quoted_options "colorlinks,breaklinks,linkcolor=clemsonorange,urlcolor=clemsonorange,anchorcolor=clemsonorange,citecolor=black"
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\headheight 3ex
+\headsep 3ex
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+blankline
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle" tabularwidth="93text%">
+<column alignment="none" valignment="top" special="@{\extracolsep{\fill}}l">
+<column alignment="right" valignment="top">
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+E-mail: 
+\family typewriter
+robert.lowe@maryvillecollege.edu
+\family default
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Office Phone: N/A
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Office Hours: 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Synchronous Hour: F 11:00 – 11:50
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MWF 1:00PM – 2:00PM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Office: Zoom Room (See Blackboard)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TR 3:00PM – 4:00PM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Primary Contact Point: The Tartan
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 5mm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Syllabus Revisions
+\end_layout
+
+\begin_layout Standard
+Normally, a syllabus cannot be revised in any substantial way.
+ Schedules and activities may adjust, but the overall layout of a course
+ should be settled by the first day of classes.
+ This semester, however, is anything but normal.
+ We are shifting from a traditional in-person class format to an online
+ course for our final few weeks of this semester.
+ As such, this requires a more substantial change to the syllabus.
+ This document contains the revised format of the class.
+ Grading and expectations for the period prior to March 30, 2020 remain
+ in full force.
+ The grading categories will not change, but the requirements to receive
+ credit from this time forward will change.
+ The end result is a hybrid course that met in person for the most of the
+ semester and is now online.
+\end_layout
+
+\begin_layout Standard
+Please read this syllabus carefully.
+ This document specifies how we will proceed for the remainder of the semester.
+ 
+\end_layout
+
+\begin_layout Section*
+Course Description
+\end_layout
+
+\begin_layout Standard
+A study of theoretical models of computing, including finite state machines,
+ pushdown automata, context-free grammars, and Turing machines.
+ The concepts of decidability, complexity theory, and NP-Completeness will
+ be studied in depth.
+\end_layout
+
+\begin_layout Section*
+Required Materials
+\end_layout
+
+\begin_layout Itemize
+Various papers, which will be distributed in class.
+ 
+\end_layout
+
+\begin_layout Section*
+Prerequisites
+\end_layout
+
+\begin_layout Itemize
+CSC2310 Discrete Structures 
+\end_layout
+
+\begin_layout Itemize
+Courage 
+\end_layout
+
+\begin_layout Section*
+Course Goals
+\end_layout
+
+\begin_layout Standard
+The big-picture goal of this course is for you to become well acquainted
+ with abstract mathematical literature and learn how to treat mathematics
+ as a participatory subject.
+ We will be reading the papers which started our field, and along the way
+ we will cultivate an appreciation for the literature, and we will also
+ learn about the authors of these papers.
+\end_layout
+
+\begin_layout Standard
+A successful student will: 
+\end_layout
+
+\begin_layout Enumerate
+Gain an appreciation for mathematical literature.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Learn to see the beauty of a well formed proof.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Learn to write beautiful proofs yourself.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Classify problems into decidable and undecidable problems.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Understand how computational theory relates to mathematics, the universe,
+ and human beings.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Get a taste of the peer-review process.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Understand the underlying theory of computation.
+ 
+\end_layout
+
+\begin_layout Enumerate
+View computer science as a mathematical discipline.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Realize that mathematicians are not divine beings who hand wisdom down from
+ on high.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Learn to participate in making mathematical discoveries.
+ 
+\end_layout
+
+\begin_layout Standard
+The more ambitious among you may even try to produce publishable results.
+\end_layout
+
+\begin_layout Section*
+Course Structure
+\end_layout
+
+\begin_layout Subsection*
+Methods of Instruction
+\end_layout
+
+\begin_layout Subsubsection*
+Synchronous Instruction
+\end_layout
+
+\begin_layout Standard
+Synchronous instruction activities are activities where the entire class
+ meets at the same time and performs the activity together.
+ This is, of course, difficult in an online environment.
+ We will therefore rely more on asynchronous activities, which are outlined
+ in the next section.
+ However, synchronous instruction is needed because it affords you with
+ the best ability to ask questions, and it gives me the best feed back and
+ discussions.
+ 
+\series bold
+We will have one weekly synchronous session during our normal class time
+ (11:00 – 11:50) every Friday, beginning April 3.
+
+\series default
+ These sessions will take place via Zoom.
+ With the exception of the final presentations, these sessions will likely
+ be shorter than a normal class period.
+ Synchronous activities will include:
+\end_layout
+
+\begin_layout Itemize
+Weekly discussions of the readings
+\end_layout
+
+\begin_layout Itemize
+Online Presentations (During the final exam period.)
+\end_layout
+
+\begin_layout Subsubsection*
+Asynchronous Instruction
+\end_layout
+
+\begin_layout Standard
+Asynchronous instruction is what makes online learning desirable to so many
+ students! However, it is also the biggest disadvantage.
+ These are course materials which will be posted online, which you can explore
+ at your own pace on your own schedule.
+ That last bit is the key, for if you do not schedule time to actually avail
+ yourself of these things, you will not look at them and you will perform
+ poorly on the final portion of the course.
+ My recommendation is to use these during the normal class periods, and
+ to help you along I have strict due dates on completing asynchronous activities.
+ These activities and materials include:
+\end_layout
+
+\begin_layout Itemize
+Assigned Readings
+\end_layout
+
+\begin_layout Itemize
+Brief Recorded Lectures (introducing and highlighting elements of the papers)
+\end_layout
+
+\begin_layout Itemize
+Homework Assignments
+\end_layout
+
+\begin_layout Itemize
+Online Discussion via Tartan Forums
+\end_layout
+
+\begin_layout Subsection*
+Grading
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A$
+\end_inset
+
+ be a sequence 
+\begin_inset Formula $A=\langle\epsilon,\Sigma,\alpha,\phi,\rho,\sigma\rangle$
+\end_inset
+
+ where
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\epsilon:=$
+\end_inset
+
+ Sequence of grades 
+\begin_inset Formula $\langle\epsilon_{1},\epsilon_{2},\dots,\epsilon_{|\epsilon|}\rangle$
+\end_inset
+
+ pertaining to grades on easy problems 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Sigma:=$
+\end_inset
+
+ Sequence of grades 
+\begin_inset Formula $\langle\Sigma_{1},\Sigma_{2},\dots,\Sigma_{|\Sigma|}\rangle$
+\end_inset
+
+ pertaining to grades on harder problems 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\alpha:=$
+\end_inset
+
+ 
+\begin_inset Formula ${\displaystyle \frac{|\epsilon|+|\Sigma|+|X|}{|P|}}$
+\end_inset
+
+ where 
+\begin_inset Formula $X$
+\end_inset
+
+ is a set of attempted but not solved problems and 
+\begin_inset Formula $P$
+\end_inset
+
+ is the set of all problems presented to the class.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\phi:=$
+\end_inset
+
+ A sequence of grades 
+\begin_inset Formula $\langle\phi_{1},\phi_{2}\rangle$
+\end_inset
+
+ pertaining to two peer reviewed papers 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\rho:=$
+\end_inset
+
+ The set of all contributions made to the class, either through posing problems,
+ peer review, or discussion.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\sigma:=$
+\end_inset
+
+ Is the grade of your final research presentation.
+ 
+\end_layout
+
+\begin_layout Standard
+We define a function 
+\begin_inset Formula $g:A\mapsto x\in\mathbb{R}|0\leq x\leq1$
+\end_inset
+
+.
+ Futhermore, we construct a Turing machine 
+\begin_inset Formula $Z_{g}$
+\end_inset
+
+ which computes the function 
+\begin_inset Formula $g$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In order to arrive at the sought after function, 
+\begin_inset Formula $Z_{g}$
+\end_inset
+
+ first computes 
+\begin_inset Formula $A'$
+\end_inset
+
+ where 
+\begin_inset Formula $A'=\langle e,s,\alpha,p,f,r,\sigma\rangle$
+\end_inset
+
+ where each 
+\begin_inset Formula $x\in A'$
+\end_inset
+
+ corresponds to the like term in 
+\begin_inset Formula $A$
+\end_inset
+
+, and where every 
+\begin_inset Formula $x\in A'$
+\end_inset
+
+ satisfies the constraints 
+\begin_inset Formula $x\in\mathbb{R}|0\leq x\leq1$
+\end_inset
+
+.
+ The simplest of these transformations are 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma$
+\end_inset
+
+, which are simply a direct transcriptions from 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ The transformations for 
+\begin_inset Formula $e,s,f$
+\end_inset
+
+ are accomplished through simple averaging of their corresponding sequences.
+ This leaves the computation of 
+\begin_inset Formula $p$
+\end_inset
+
+ and 
+\begin_inset Formula $r$
+\end_inset
+
+.
+ Unfortunately, these mappings require a qualitative analysis which is not
+ readily obtainable via conventional means due to the ambiguity of its definitio
+n and must be approximated by a stochastic process (your professor).
+ Of course, this establishes that your grades are not strictly computable,
+ and the proceeding can only therefore be an approximation of 
+\begin_inset Formula $g$
+\end_inset
+
+, but as it is the best we can do we must proceed! Having established that
+ 
+\begin_inset Formula $Z_{g}$
+\end_inset
+
+ cannot exist, we replace it with 
+\begin_inset Formula $\hat{Z_{g}}$
+\end_inset
+
+ which approximates 
+\begin_inset Formula $g$
+\end_inset
+
+ via the means described above and with the addition of the approximate
+ terms.
+\end_layout
+
+\begin_layout Standard
+Having approximated 
+\begin_inset Formula $A'$
+\end_inset
+
+, we introduce 
+\begin_inset Formula $W=\langle10,20,10,30,10,20\rangle$
+\end_inset
+
+.
+ Because 
+\begin_inset Formula $W$
+\end_inset
+
+ is a sequence of constants, it may be encoded into the internal configuration
+ of 
+\begin_inset Formula $\hat{Z_{g}}$
+\end_inset
+
+.
+ The final computation in this approximation is performed by arithmetic
+ and is well defined as: 
+\begin_inset Formula 
+\[
+{\displaystyle \frac{\sum_{i=1}^{7}A'_{i}W_{i}}{100}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The real number obtained by this computation will be converted into one
+ of the arbitrary elements in the grade alphabet using the well-known method.
+\end_layout
+
+\begin_layout Subsection*
+Remaining Schedule
+\end_layout
+
+\begin_layout Standard
+This is the tentative schedule for the remainder of our course.
+ Papers are introduced on the days bearing their full title, and discussions
+ follow.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "spring2020-01-schedule-revised.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Course Policies
+\end_layout
+
+\begin_layout Subsection*
+Late Policy
+\end_layout
+
+\begin_layout Standard
+No late work will be accepted under any circumstances (except as mercy and
+ decency may dictate in extremely rare events).
+\end_layout
+
+\begin_layout Subsection*
+Extra Credit
+\end_layout
+
+\begin_layout Standard
+No extra credit will be given under any circumstances.
+\end_layout
+
+\begin_layout Subsection*
+Excused Absences
+\end_layout
+
+\begin_layout Standard
+In some cases, absences may be excused.
+ These include: 
+\end_layout
+
+\begin_layout Itemize
+School Sanctioned Events (Sports, Concerts, etc.) 
+\end_layout
+
+\begin_layout Itemize
+Severe Illness 
+\end_layout
+
+\begin_layout Itemize
+Family Emergencies 
+\end_layout
+
+\begin_layout Itemize
+Court Appearance / Jury Duty 
+\end_layout
+
+\begin_layout Standard
+In the case of a school event, notice must be given at least one week prior
+ to the absence.
+ The notice must include a signed note from the faculty or staff member
+ in charge of the event.
+ This note must be given in physical form, electronic notes will not be
+ accepted.
+ In the case of illness, a doctor's note is required.
+ Note that except in extreme circumstances, doctor's appointments do not
+ qualify as a valid reason to miss a class.
+ Please be respectful of the other students, and schedule appointments during
+ your free time.
+\end_layout
+
+\begin_layout Standard
+Family emergencies will require some form of proof.
+ Where possible, you must give advance notice of missing a class.
+ The exception to this would need to be fairly severe, and hopefully it
+ will not come up.
+ For court appearances and/or jury duty, you must provide a copy of your
+ summons.
+ You may redact any details you wish, save for the actual date and time
+ of your appearance.
+ Court appearances must be cleared at least one week in advance.
+\end_layout
+
+\begin_layout Subsection*
+Communication and Extra Help
+\end_layout
+
+\begin_layout Standard
+You are always welcome at office hours for help with any questions you may
+ have about the course.
+ For help at other times during the day, stop by or call my office to see
+ if I'm available.
+ You can also contact me by email, but often I can better help you face
+ to face and may respond with a request that you come to see me.
+ Note that I do not typically respond to email between 5 p.m.
+ and 8 a.m.
+ You may make appointments to see me at other times if your schedule does
+ not permit you to attend my office hours.
+\end_layout
+
+\begin_layout Subsection*
+Plagiarism and Cheating
+\end_layout
+
+\begin_layout Standard
+You are expected to do your own work.
+ Never submit the work of others, never give unauthorized assistance to
+ others, do not use unauthorized aids during exams, and do not ask for help
+ from other faculty members without the approval of your professor.
+ Plagiarism and cheating are serious offenses that will not be tolerated.
+ Explanations regarding these offenses and how they are handled can be found
+ in the MC Student Handbook at
+\begin_inset Newline newline
+\end_inset
+
+https://www.maryvillecollege.edu/academics/catalog/handbook/section-nine/.
+\begin_inset Newline newline
+\end_inset
+
+You are expected to read and understand these policies.
+ Offenses on specific assignments, quizzes, or exams will result in a score
+ of 0 on the relevant assignment, and a letter of censure will be placed
+ in your college file.
+ Repeat offenses will result in further disciplinary action, including the
+ possibility of failing the course.
+\end_layout
+
+\begin_layout Subsection*
+Students with Disabilities
+\end_layout
+
+\begin_layout Standard
+Any student who feels s/he may need learning or physical accommodation(s)
+ based on the impact of a disability should contact Services for Students
+ with Disabilities to discuss your specific needs.
+ Please contact 981-8124 to coordinate reasonable accommodations for students
+ with documented disabilities.
+ The Disability Services office is located in the Learning Center in the
+ basement of Thaw Hall.
+ Undocumented disabilities will not be accommodated.
+\end_layout
+
+\end_body
+\end_document
